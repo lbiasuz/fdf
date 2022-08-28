@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 09:46:40 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/27 23:43:25 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FDF_H
 # include <stdlib.h>
 # include "libft/libft.h"
+# include "libft/get_next_line.h"
+# include "libft/ft_printf.h"
+# include "minilibx/mlx.h"
 
 typedef struct s_point {
 	int	x;
@@ -30,5 +33,7 @@ typedef struct s_mesh {
 	int		size_y;
 	t_list	*grid;
 } t_mesh;
+
+void	free_arr(char **arr);
 
 #endif

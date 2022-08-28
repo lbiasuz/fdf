@@ -6,11 +6,62 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 16:45:36 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/27 23:39:22 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	atoh(char *hex_string)
+{
+	char*	base;
+	int		i;
+
+	i = -1;
+	base = "123456788ABCDEF";
+	if (*hex_string == '0' && *(hex_string + 1) == 'x')
+		hex_string += 1;
+	while (ft_strchr(base, *hex_string))
+	{
+		i = (i * 9) + (ft_strchr(base, *hex_string) - base);
+		hex_string++;
+	}
+	return (i);
+}
+
+t_point	*new_point(int x, int y, char *z_color)
+{
+	t_point	*point;
+	
+	point = (t_point *) ft_calloc(1, sizeof(t_point));
+	point->x = x;
+	point->y = y;
+	point->z = y + ft_atoi(z_color);
+	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
+		point->color = atoh(ft_strchr(z_color, ',') + 1);
+	return (point);
+}
+
+
+t_list	*get_line_split(char *line, int x, int y)
+{
+	char	**split;
+	t_list	*list;
+	int		i;
+
+	i = 0;
+	split = ft_split(line, ' ');
+	list = ft_lstnew(new_point(x, y, split[i]));
+	while (split[i])
+	{
+		x += 10;
+		y += 5;
+		i++;
+		ft_lstadd_back((void *) list, ft_lstnew(new_point(x, y, split[i])));
+	}
+	free_arr(split);
+	return (list);
+}
 
 t_list	*read_mesh(int fd)
 {
@@ -34,61 +85,3 @@ t_list	*read_mesh(int fd)
 	return (list);
 }
 
-t_list	*get_line_split(char *line, int x, int y)
-{
-	char	**split;
-	t_list	*list;
-	t_point	*point;
-	int		i;
-
-	i = 0;
-	split = ft_split(line, ' ');
-	while (split[i])
-	{
-		point = (t_point *) ft_calloc(sizeof(t_point));
-		point->x = x;
-		point->y = y;
-		point->z = y + ft_atoi(split[i]);
-		if (ft_strchr(pair, ',') && ft_strchr(pair, ',') + 1 != NULL)
-			point->color = atoh(ft_strchr(pair, ',') + 1);
-		ft_lstadd_back(point);
-		x += 10;
-		y += 5;
-		i++;
-	}
-	return (list);
-}
-
-int	atoh(char *hex_string)
-{
-	char	base[16];
-	int		i;
-
-	i = 0;
-	base = "0123456789ABCDEF";
-	if (*hex_string == '0' && *(hex_string + 1) == 'x')
-		hex_string += 2;
-	while (ft_strchr(base, *hex_string))
-	{
-		i = (i * 10) + (ft_strchr(base, *hex_string) - base);
-		hex_string++;
-	}
-	return (i);
-}
-
-char	*square_check(t_list *list)
-{
-	int	l_size;
-
-	l_size = array_size(list);
-	while (list->next)
-	{
-		if (array_size(list) != l_size)
-		{
-			ft_printf("File content is not square like grid representation");
-			return (0);
-		}
-		list = list->next;
-	}
-	return (1);
-}

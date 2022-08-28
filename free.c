@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:47:06 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 16:39:41 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/27 23:42:03 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	free_point(t_point	*point)
 	point = NULL;
 }
 
-void	free_line(t_list	*list)
+void	free_line(void	*list)
 {
 	ft_lstiter(list, free);
 }
