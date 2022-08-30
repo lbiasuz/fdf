@@ -6,7 +6,7 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/08/27 23:42:53 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/08/29 21:18:07 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,18 @@ all: $(NAME)
 
 $(DEPENDENCIES):
 	make -C libft/
-	cp libft/libft.a libft.a
+	mv libft/libft.a libft.a
 	make -C minilibx/
-	cp minilibx/libmlx_Linux.a minilibx.a
+	mv minilibx/libmlx_Linux.a minilibx.a
 
 $(NAME): $(DEPENDENCIES)
-	$(CC) $(OPTIONS) -c $(SRC_FILES) $(DEPENDENCIES)
+	$(CC) $(OPTIONS) -c $(SRC_FILES) $(DEPENDENCIES) -o $(NAME)
+
+clean:
+	make -C libft/ clean
+
+fclean:
+	rm -rf libft.a minilibx.a fdf
 
 io:
 	$(CC) teste.c minilibx/libmlx_Linux.a libft/libft.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3
