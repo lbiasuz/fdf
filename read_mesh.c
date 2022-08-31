@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 23:39:22 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/30 23:20:59 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ t_point	*new_point(int x, int y, char *z_color)
 	point->z = y + ft_atoi(z_color);
 	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
 		point->color = atoh(ft_strchr(z_color, ',') + 1);
+	else
+		point->color = 0xFFFFFF;
 	return (point);
 }
-
 
 t_list	*get_line_split(char *line, int x, int y)
 {

@@ -6,13 +6,13 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/08/29 21:18:07 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/08/30 22:34:51 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC	=				gcc
 
-NAME	=			fdf
+NAME	=			fdf.out
 
 HEAD_FILES	=		fdf.h
 
@@ -22,7 +22,7 @@ OPTIONS		=		-Wall -Wextra -Werror -Lmlx_linux \
 
 DEPENDENCIES	=	minilibx.a libft.a
 
-SRC_FILES		=	free.c read_mesh.c
+SRC_FILES		=	free.c read_mesh.c plot_mesh.c dot_fdf.c
 
 all: $(NAME)
 
@@ -33,8 +33,7 @@ $(DEPENDENCIES):
 	mv minilibx/libmlx_Linux.a minilibx.a
 
 $(NAME): $(DEPENDENCIES)
-	$(CC) $(OPTIONS) -c $(SRC_FILES) $(DEPENDENCIES) -o $(NAME)
-
+	$(CC) $(OPTIONS) -c $(SRC_FILES) $(DEPENDENCIES)
 clean:
 	make -C libft/ clean
 

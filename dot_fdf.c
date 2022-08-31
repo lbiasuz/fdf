@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:51:41 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 16:46:35 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/30 22:36:28 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	open_fdf(char *file_name)
 {
 	int	fd;
 
-	fd = open(file_name);
+	fd = open(file_name, O_RDONLY);
 	if (!fd)
 		ft_printf("FILE ERROR: path %s not found", file_name);
 	return (fd);
