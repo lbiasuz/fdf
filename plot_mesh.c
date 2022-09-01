@@ -20,7 +20,7 @@ void	put_pixel(t_point point, t_mesh *mesh)
 	*i = point.color;
 }
 
-void	plot_line(t_point *beg, t_point *end, t_mesh * mesh)
+void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
 	int		d;
 	t_point	aux;

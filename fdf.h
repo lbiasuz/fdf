@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/30 22:35:47 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/31 22:33:09 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ typedef struct s_mesh {
 	t_list	*grid;
 } t_mesh;
 
+int		open_fdf(char *file_name);
+void	free_point(t_point *point);
+void	free_line(void *list);
+void	free_mesh(t_mesh *mesh);
 void	free_arr(char **arr);
+
+void	put_pixel(t_point point, t_mesh *mesh);
+void	plot_line(t_point *beg, t_point *end, t_mesh *mesh);
+void	plot_mesh(t_mesh *mesh);
+
+int		atoh(char *hex_string);
+t_point	*new_point(int x, int y, char *z_color);
+t_list	*get_line_split(char *line, int x, int y);
+t_list	*read_mesh(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/30 23:20:59 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/31 23:46:36by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ t_list	*get_line_split(char *line, int x, int y)
 	i = 0;
 	split = ft_split(line, ' ');
 	list = ft_lstnew(new_point(x, y, split[i]));
-	while (split[i])
+	while (split[++i])
 	{
 		x += 10;
 		y += 5;
-		i++;
-		ft_lstadd_back((void *) list, ft_lstnew(new_point(x, y, split[i])));
+		ft_printf("LINE: %s \n", split[i]);
+		ft_lstadd_back(&list, ft_lstnew(new_point(x, y, split[i])));
 	}
 	free_arr(split);
 	return (list);
@@ -81,6 +81,8 @@ t_list	*read_mesh(int fd)
 		x -= 5;
 		y += 10;
 		line = get_next_line(fd);
+		if (!line)
+			break ;
 		ft_lstadd_back(&list, get_line_split(line, x, y));
 	}
 	return (list);

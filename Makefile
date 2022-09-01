@@ -6,7 +6,7 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/08/30 22:34:51 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/08/31 22:36:09 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OPTIONS		=		-Wall -Wextra -Werror -Lmlx_linux \
 
 DEPENDENCIES	=	minilibx.a libft.a
 
-SRC_FILES		=	free.c read_mesh.c plot_mesh.c dot_fdf.c
+SRC_FILES		=	free.c read_mesh.c plot_mesh.c dot_fdf.c fdf.c
 
 all: $(NAME)
 
@@ -30,10 +30,10 @@ $(DEPENDENCIES):
 	make -C libft/
 	mv libft/libft.a libft.a
 	make -C minilibx/
-	mv minilibx/libmlx_Linux.a minilibx.a
+	mv minilibx/libmlx.a minilibx.a
 
 $(NAME): $(DEPENDENCIES)
-	$(CC) $(OPTIONS) -c $(SRC_FILES) $(DEPENDENCIES)
+	$(CC) $(SRC_FILES) $(DEPENDENCIES) $(OPTIONS)
 clean:
 	make -C libft/ clean
 
