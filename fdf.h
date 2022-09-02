@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/31 22:33:09 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/09/01 22:50:11 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_mesh {
 	void	*mlx;
 	void	*mlx_win;
 	char	*image_str;
+	void	*image;
 	int		size_x;
 	int		size_y;
 	t_list	*grid;

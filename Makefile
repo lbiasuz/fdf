@@ -6,7 +6,7 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/08/31 22:36:09 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/09/02 01:05:11 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME): $(DEPENDENCIES)
 clean:
 	make -C libft/ clean
 
-fclean:
+fclean: clean
 	rm -rf libft.a minilibx.a fdf
 
 io:

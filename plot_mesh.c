@@ -14,10 +14,10 @@
 
 void	put_pixel(t_point point, t_mesh *mesh)
 {
-	int	*i;
-	
-	i = (int *) mesh->image_str + 4 * (point.x + point.y * mesh->size_y);
-	*i = point.color;
+	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y))) = 0xff;
+	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 1) = 0xff;
+	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 2) = 0xff;
+	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 3) = 0x0;
 }
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
@@ -53,6 +53,6 @@ void	plot_mesh(t_mesh *mesh)
 			plot_line(x_aux->content, x_aux->next->content, mesh);
 			x_aux = x_aux->next;
 		}
-		y_aux = mesh->grid->next;
+		y_aux = y_aux->next;
 	}
 }
