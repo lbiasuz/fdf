@@ -44,47 +44,63 @@ t_point	*new_point(int x, int y, char *z_color)
 	return (point);
 }
 
-t_list	*get_line_split(char *line, int x, int y)
+t_point	**get_line_split(char *line, int x, int y)
 {
-	char	**split;
-	t_list	*list;
+	char		**split;
+	t_point**	vec;
 	int		i;
 
 	i = 0;
 	split = ft_split(line, ' ');
-	list = ft_lstnew(new_point(x, y, split[i]));
-	while (split[++i])
-	{
-		x += 10;
-		y += 5;
-		ft_printf("LINE: %s \n", split[i]);
-		ft_lstadd_back(&list, ft_lstnew(new_point(x, y, split[i])));
+	while (split[i])
+		i++;
+	vec = ft_calloc(i + 1, sizeof(t_point *));
+	if (!vec)
+		return (NULL);
+	vec[i] = NULL;
+	x +=  10 * i;
+	y +=  5 * i;
+	while (--i > 0)
+	{	
+		vec[i] = new_point(x, y, split[i]);
+		x -= 10;
+		y -= 5;
 	}
-	free_arr(split);
-	return (list);
+	return (vec);
 }
 
-t_list	*read_mesh(int fd)
+t_point ***append_to_end(t_point ***list, t_point **line)
 {
-	t_list	*list;
-	char	*line;
-	int		y;
-	int		x;
+	int	i;
+	t_point	***res;
 
-	x = 0;
-	y = 0;
+	i = 0;
+	while (list && list[i])
+		i++;
+	res = ft_calloc(i + 2, sizeof(t_point **));
+	ft_memcpy(res, list, sizeof(t_point **) * i);
+	res[i] = line;
+	res[i + 1] = NULL;
+	free(list);
+	return (res);
+}
+
+t_point	***read_mesh(int fd, int x, int y)
+{
+	t_point ***list;
+	char	*line;
+
 	line = get_next_line(fd);
-	list = ft_lstnew(get_line_split(line, x, y));
+       	list = NULL;
 	while (line)
 	{
+		list = append_to_end(list, get_line_split(line, x, y));
 		free(line);
+		line = get_next_line(fd);
 		x -= 5;
 		y += 10;
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		ft_lstadd_back(&list, get_line_split(line, x, y));
 	}
+	free(line);
 	return (list);
 }
 

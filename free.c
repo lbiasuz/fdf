@@ -40,10 +40,17 @@ void	free_line(void	*list)
 
 void	free_mesh(t_mesh *mesh)
 {
-	ft_lstiter(mesh->grid, free_line);
-	free(mesh->image_str);
-	mlx_destroy_window(mesh->mlx, mesh->mlx_win);
-	free(mesh->mlx);
-	free(mesh);
-	mesh = NULL;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (mesh->grid[i])
+	{
+		while(mesh->grid[i][j++])
+			free_point(mesh->grid[i][j]);
+		free(mesh->grid[i]);
+		i++;
+	}
+	free(mesh->grid);
 }

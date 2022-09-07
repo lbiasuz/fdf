@@ -10,12 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	array_size(char **list)
+#include "fdf.h"
+
+int	array_size(t_point **list)
 {
 	int	i;
 
 	i = 0;
-	while (list[i])
+	while (list && list[i])
 		i++;
 	return (i);
 }
+
+int	arr_arr_size(t_point ***list)
+{
+	int	i;
+	i = 0;
+	while (list && list[i])
+		i++;
+	return (i);
+}
+

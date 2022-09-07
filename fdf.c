@@ -28,12 +28,12 @@ int	main(int argc, char **argv)
 	if (fd <= 0)
 		return (0);
 	mesh = (t_mesh *) malloc(sizeof(t_mesh));
-	mesh->grid = read_mesh(fd);
+	mesh->grid = read_mesh(fd, 0, 0);
 	mesh->mlx = mlx_init();
-	mesh->size_y = ft_lstsize(mesh->grid) * 10;
-	mesh->size_x = ft_lstsize(mesh->grid->content) * 10;
+	mesh->size_y = arr_arr_size(mesh->grid) * 10;
+	mesh->size_x = array_size(mesh->grid[0]) * 10;
 	mesh->image = mlx_new_image(mesh->mlx, mesh->size_x, mesh->size_y);
-	mesh->image_str = mlx_get_data_addr(mesh->image, &bpp, &mesh->size_x, &endianes);
+	mesh->image_str = mlx_get_data_addr(mesh->image, &bpp, &(mesh->size_x), &endianes);
 	plot_mesh(mesh);
 	mesh->mlx_win = mlx_new_window(mesh->mlx, mesh->size_x, mesh->size_y, "FDF?");
 	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:39 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/30 23:03:11lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/30 23:03:11 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	put_pixel(t_point point, t_mesh *mesh)
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
+	t_point		aux;
 	int		d;
-	t_point	aux;
 
 	aux = (t_point){.x = beg->x, .y = beg->y, .z = beg->z, .color = beg->color};
 	d = (2 * (end->y - beg->y) - (end->x - beg->x));
@@ -41,18 +41,47 @@ void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 
 void	plot_mesh(t_mesh *mesh)
 {
-	t_list	*y_aux;
-	t_list	*x_aux;
+	t_point		***y_aux;
+	t_point		**x_aux;
+	int		i;
+	int		j;
 	
+	j = 0;
 	y_aux = mesh->grid;
-	while(y_aux->next)
+	while(y_aux[0] && y_aux[j + 1])
 	{
-		x_aux = y_aux->content;
-		while(x_aux->next)
+		i = 0;
+		x_aux = y_aux[j];
+		while(x_aux[0] && x_aux[i + 1])
 		{
-			plot_line(x_aux->content, x_aux->next->content, mesh);
-			x_aux = x_aux->next;
+			plot_line(x_aux[i], x_aux[i + 1], mesh);
+			i++;
 		}
-		y_aux = y_aux->next;
+		j++;
 	}
 }
+
+
+//void	plot_mesh(t_mesh *mesh)
+//{
+//	t_list	*y_aux;
+//	t_point	**x_aux;
+//	int	i;
+//
+//	i = 0;
+//	y_aux = mesh->grid;
+//	while(y_aux)
+//	{
+//		while(end && x_aux)
+//		{
+//			if (!end->content)
+//				ft_printf("HOY");
+//			if (!x_aux->content)
+//				ft_printf("HAY");
+//			plot_line(end->content, x_aux->content, mesh);
+//		       	end = x_aux;
+//			x_aux = x_aux->next;
+//	       	}
+//		y_aux = y_aux->next;
+//	}
+//}
