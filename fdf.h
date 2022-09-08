@@ -24,6 +24,8 @@ typedef struct s_point {
 	int	y;
 	int	z;
 	int	color;
+	void	*mlx;
+	void	*mlx_win;
 } t_point;
 
 typedef struct s_mesh {

@@ -12,31 +12,41 @@
 
 #include "fdf.h"
 
+int	print_mesh(void *aux)
+{	
+
+	int		endianes;
+	int		bpp;
+	t_mesh		*mesh;
+
+	endianes = 1;
+	bpp = 32;
+	mesh = (t_mesh *) aux;
+	mesh->image = mlx_new_image(mesh->mlx, mesh->size_x, mesh->size_y);
+	mesh->image_str = mlx_get_data_addr(mesh->image, &bpp, &mesh->size_x, &endianes);
+	//plot_mesh(mesh);
+	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;
-	int		bpp;
 	t_mesh	*mesh;
-	int		endianes;
-	
-	endianes = 1;
-	bpp = 32;
 	if (argc <= 1)
 		return (0);
 	ft_printf("FD: %s \n", argv[1]);
 	fd = open_fdf(argv[1]);
 	if (fd <= 0)
 		return (0);
-	mesh = (t_mesh *) malloc(sizeof(t_mesh));
+	mesh = malloc(sizeof(t_mesh));
 	mesh->grid = read_mesh(fd, 0, 0);
-	mesh->mlx = mlx_init();
 	mesh->size_y = arr_arr_size(mesh->grid) * 10;
 	mesh->size_x = array_size(mesh->grid[0]) * 10;
-	mesh->image = mlx_new_image(mesh->mlx, mesh->size_x, mesh->size_y);
-	mesh->image_str = mlx_get_data_addr(mesh->image, &bpp, &(mesh->size_x), &endianes);
-	plot_mesh(mesh);
+	mesh->mlx = mlx_init();
 	mesh->mlx_win = mlx_new_window(mesh->mlx, mesh->size_x, mesh->size_y, "FDF?");
-	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
+	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
 	close(fd);
 }
+

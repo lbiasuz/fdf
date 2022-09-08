@@ -41,4 +41,4 @@ fclean: clean
 	rm -rf libft.a minilibx.a fdf
 
 io:
-	$(CC) teste.c minilibx/libmlx_Linux.a libft/libft.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3
+	$(CC) teste.c minilibx.a libft.a -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3

@@ -14,10 +14,10 @@
 
 void	put_pixel(t_point point, t_mesh *mesh)
 {
-	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y))) = 0xff;
-	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 1) = 0xff;
-	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 2) = 0xff;
-	*(mesh->image_str + 4 * (point.x + (point.y * mesh->size_y)) + 3) = 0x0;
+	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)))) = 100;
+	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 1)) = 100;
+	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 2)) = 100;
+	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 3)) = 0;
 }
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
