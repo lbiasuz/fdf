@@ -54,7 +54,7 @@ t_point	**get_line_split(char *line, int x, int y)
 	split = ft_split(line, ' ');
 	while (split[i])
 		i++;
-	vec = ft_calloc(i + 1, sizeof(t_point *));
+	vec = ft_calloc(i + 1, sizeof(t_point));
 	if (!vec)
 		return (NULL);
 	vec[i] = NULL;
@@ -91,7 +91,7 @@ t_point	***read_mesh(int fd, int x, int y)
 	char	*line;
 
 	line = get_next_line(fd);
-       	list = NULL;
+       	list = append_to_end(NULL, get_line_split(line, x, y));
 	while (line)
 	{
 		list = append_to_end(list, get_line_split(line, x, y));
@@ -100,7 +100,6 @@ t_point	***read_mesh(int fd, int x, int y)
 		x -= 5;
 		y += 10;
 	}
-	free(line);
 	return (list);
 }
 

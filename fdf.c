@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 		return (0);
 	mesh = malloc(sizeof(t_mesh));
 	mesh->grid = read_mesh(fd, 0, 0);
-	mesh->size_y = arr_arr_size(mesh->grid) * 10;
 	mesh->size_x = array_size(mesh->grid[0]) * 10;
+	mesh->size_y = arr_arr_size(mesh->grid) * 10;
 	mesh->mlx = mlx_init();
 	mesh->mlx_win = mlx_new_window(mesh->mlx, mesh->size_x, mesh->size_y, "FDF?");
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
