@@ -24,8 +24,6 @@ typedef struct s_point {
 	int	y;
 	int	z;
 	int	color;
-	void	*mlx;
-	void	*mlx_win;
 } t_point;
 
 typedef struct s_mesh {
@@ -36,6 +34,8 @@ typedef struct s_mesh {
 	int		size_x;
 	int		size_y;
 	t_point ***grid;
+	int	bpp;
+	int	endianes;
 } t_mesh;
 
 int		open_fdf(char *file_name);

@@ -14,10 +14,10 @@
 
 void	put_pixel(t_point point, t_mesh *mesh)
 {
-	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)))) = 100;
-	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 1)) = 100;
-	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 2)) = 100;
-	*(mesh->image_str + (4 * (point.x + (point.y * mesh->size_x)) + 3)) = 0;
+	char *aux;
+
+	aux = mesh->image_str + ((point.y * mesh->size_x + point.x) * mesh->bpp / 8 );
+	*(int*)aux = point.color;
 }
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
@@ -62,26 +62,26 @@ void	plot_mesh(t_mesh *mesh)
 }
 
 
-//void	plot_mesh(t_mesh *mesh)
-//{
-//	t_list	*y_aux;
-//	t_point	**x_aux;
-//	int	i;
-//
-//	i = 0;
-//	y_aux = mesh->grid;
-//	while(y_aux)
-//	{
-//		while(end && x_aux)
-//		{
-//			if (!end->content)
-//				ft_printf("HOY");
-//			if (!x_aux->content)
-//				ft_printf("HAY");
-//			plot_line(end->content, x_aux->content, mesh);
-//		       	end = x_aux;
-//			x_aux = x_aux->next;
-//	       	}
-//		y_aux = y_aux->next;
-//	}
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

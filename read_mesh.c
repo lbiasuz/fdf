@@ -54,13 +54,13 @@ t_point	**get_line_split(char *line, int x, int y)
 	split = ft_split(line, ' ');
 	while (split[i])
 		i++;
-	vec = ft_calloc(i + 1, sizeof(t_point));
+	vec = ft_calloc(i, sizeof(t_point));
 	if (!vec)
 		return (NULL);
 	vec[i] = NULL;
 	x +=  10 * i;
 	y +=  5 * i;
-	while (--i > 0)
+	while (--i >= 0)
 	{	
 		vec[i] = new_point(x, y, split[i]);
 		x -= 10;
