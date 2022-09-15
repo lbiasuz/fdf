@@ -33,9 +33,10 @@ typedef struct s_mesh {
 	void	*image;
 	int		size_x;
 	int		size_y;
+	int		size_scale;
 	t_point ***grid;
-	int	bpp;
-	int	endianes;
+	int		bpp;
+	int		endianes;
 } t_mesh;
 
 int		open_fdf(char *file_name);
@@ -50,8 +51,8 @@ void	plot_mesh(t_mesh *mesh);
 
 int		atoh(char *hex_string);
 t_point	*new_point(int x, int y, char *z_color);
-t_point **get_line_split(char *line, int x, int y);
-t_point ***read_mesh(int fd, int x, int y);
+t_point **get_line_split(char *line, int x, int y, int size_scale);
+t_point ***read_mesh(int fd, int x, int y, int size_scale);
 
 int	array_size(t_point **list);
 int	arr_arr_size(t_point ***list);

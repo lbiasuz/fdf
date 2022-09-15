@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/31 23:46:36by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/08/31 23:46:36 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_point	*new_point(int x, int y, char *z_color)
 	return (point);
 }
 
-t_point	**get_line_split(char *line, int x, int y)
+t_point	**get_line_split(char *line, int x, int y, int size_scale)
 {
 	char		**split;
 	t_point**	vec;
@@ -58,13 +58,13 @@ t_point	**get_line_split(char *line, int x, int y)
 	if (!vec)
 		return (NULL);
 	vec[i] = NULL;
-	x +=  10 * i;
-	y +=  5 * i;
+	x +=  size_scale * i;
+	y +=  size_scale / 2 * i;
 	while (--i >= 0)
 	{	
 		vec[i] = new_point(x, y, split[i]);
-		x -= 10;
-		y -= 5;
+		x -= size_scale;
+		y -= size_scale / 2;
 	}
 	return (vec);
 }
@@ -85,20 +85,20 @@ t_point ***append_to_end(t_point ***list, t_point **line)
 	return (res);
 }
 
-t_point	***read_mesh(int fd, int x, int y)
+t_point	***read_mesh(int fd, int x, int y, int size_scale)
 {
 	t_point ***list;
 	char	*line;
 
 	line = get_next_line(fd);
-       	list = append_to_end(NULL, get_line_split(line, x, y));
+       	list = append_to_end(NULL, get_line_split(line, x, y, size_scale));
 	while (line)
 	{
-		list = append_to_end(list, get_line_split(line, x, y));
+		list = append_to_end(list, get_line_split(line, x, y, size_scale));
 		free(line);
 		line = get_next_line(fd);
-		x -= 5;
-		y += 10;
+		x -= size_scale / 2;
+		y += size_scale;
 	}
 	return (list);
 }

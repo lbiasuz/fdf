@@ -16,8 +16,8 @@ void	put_pixel(t_point point, t_mesh *mesh)
 {
 	char *aux;
 
-	aux = mesh->image_str + ((point.y * mesh->size_x + point.x) * mesh->bpp / 8 );
-	*(int*)aux = point.color;
+	aux = mesh->image_str + (((point.y * mesh->size_x) + point.x) * (mesh->bpp / 8));
+	*(unsigned int*)aux = point.color;
 }
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
