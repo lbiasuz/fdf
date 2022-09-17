@@ -15,9 +15,15 @@
 void	put_pixel(t_point point, t_mesh *mesh)
 {
 	char *aux;
-
-	aux = mesh->image_str + (((point.y * mesh->size_x) + point.x) * (mesh->bpp / 8));
-	*(unsigned int*)aux = point.color;
+	
+	if (
+		(point.x <= mesh->size_x || point.x >= 0) ||
+		(point.y <= mesh->size_y || point.y >= 0)
+	)
+	{
+		aux = mesh->image_str + (((point.y * mesh->size_x) + point.x) * (mesh->bpp / 8));
+		*(unsigned int*)aux = point.color;
+	}
 }
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
@@ -30,7 +36,7 @@ void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 	while (aux.x < end->x)
 	{
 		put_pixel(aux, mesh);
-		if (d > 0)
+		if (d >= 0)
 			d += 2 * ((end->y - beg->y) - (end->x - beg->x));
 		else
 			d += 2 * (end->y - beg->y);

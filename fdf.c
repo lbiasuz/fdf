@@ -35,10 +35,10 @@ int	main(int argc, char **argv)
 	if (fd <= 0)
 		return (0);
 	mesh = malloc(sizeof(t_mesh));
-	mesh->size_scale = 10;
-	mesh->grid = read_mesh(fd, 0, 0, 10);
-	mesh->size_x = (array_size(mesh->grid[0]) + 1) * 100;
-	mesh->size_y = (arr_arr_size(mesh->grid) + 1) * 100;
+	mesh->size_scale = 20;
+	mesh->grid = read_mesh(fd, 0, 0, mesh->size_scale);
+	mesh->size_x = (array_size(mesh->grid[0]) + mesh->size_scale) * mesh->size_scale;
+	mesh->size_y = (arr_arr_size(mesh->grid) + mesh->size_scale) * mesh->size_scale;
 	mesh->bpp = 32;
 	mesh->endianes = 0;
 	mesh->mlx = mlx_init();
