@@ -59,12 +59,10 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 		return (NULL);
 	vec[i] = NULL;
 	x +=  size_scale * i;
-	y +=  size_scale * i / 5;
 	while (--i >= 0)
 	{	
 		vec[i] = new_point(x, y, split[i]);
 		x -= size_scale;
-		y -= size_scale / 10;
 	}
 	return (vec);
 }
@@ -97,8 +95,7 @@ t_point	***read_mesh(int fd, int x, int y, int size_scale)
 		list = append_to_end(list, get_line_split(line, x, y, size_scale));
 		free(line);
 		line = get_next_line(fd);
-		y += size_scale / 5;
-		x -= size_scale / 5;
+		y += size_scale / 2;
 	}
 	return (list);
 }

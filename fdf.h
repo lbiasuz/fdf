@@ -18,6 +18,7 @@
 # include "libft/ft_printf.h"
 # include "minilibx/mlx.h"
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_point {
 	int	x;
@@ -31,12 +32,15 @@ typedef struct s_mesh {
 	void	*mlx_win;
 	char	*image_str;
 	void	*image;
+	int		arr_x;
+	int		arr_y;
 	int		size_x;
 	int		size_y;
 	int		size_scale;
 	t_point ***grid;
 	int		bpp;
 	int		endianes;
+	double	angle;
 } t_mesh;
 
 int		open_fdf(char *file_name);
@@ -48,6 +52,9 @@ void	free_arr(char **arr);
 void	put_pixel(t_point point, t_mesh *mesh);
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_mesh(t_mesh *mesh);
+void	center_point(t_point *point, t_mesh *mesh);
+void	rotate_point(t_point *point, t_mesh *mesh);
+void	iterate_mesh(t_mesh *mesh, void (*f)(t_point *, t_mesh *));
 
 int		atoh(char *hex_string);
 t_point	*new_point(int x, int y, char *z_color);

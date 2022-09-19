@@ -21,3 +21,4 @@ int	open_fdf(char *file_name)
 		ft_printf("FILE ERROR: path %s not found", file_name);
 	return (fd);
 }
+
