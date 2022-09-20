@@ -95,7 +95,7 @@ t_point	***read_mesh(int fd, int x, int y, int size_scale)
 		list = append_to_end(list, get_line_split(line, x, y, size_scale));
 		free(line);
 		line = get_next_line(fd);
-		y += size_scale / 2;
+		y += size_scale;
 	}
 	return (list);
 }

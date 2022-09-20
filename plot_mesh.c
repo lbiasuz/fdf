@@ -18,10 +18,10 @@ void	put_pixel(t_point point, t_mesh *mesh)
 	
 	if (
 		(point.x < mesh->size_x && point.x >= 0) && 
-		(point.y < mesh->size_y / 5 && point.y >= 0)
+		(point.y < mesh->size_y && point.y >= 0)
 	)
 	{
-		aux = mesh->image_str + (((point.y * mesh->size_x) + point.x) * (mesh->bpp / 8));
+		aux = mesh->image_str + ((point.y * mesh->size_x) + point.x * (mesh->bpp / 8));
 		*(unsigned int*)aux = point.color;
 	}
 }
@@ -53,7 +53,7 @@ void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 		while (aux.y < end->y)
 		{
 			put_pixel(aux, mesh);
-			if (d < 0)
+			if (d > 0)
 			{
 				d += 2 * ((end->x - beg->x) - (end->y - beg->y));
 				aux.x++;
@@ -84,12 +84,16 @@ void	plot_mesh(t_mesh *mesh)
 				plot_line(x_aux[i], x_aux[i + 1], mesh);
 			else
 				plot_line(x_aux[i + 1], x_aux[i], mesh);
-			if (y_aux[j + 1] && y_aux[j + 1][i])
+			if (y_aux[j + 1] && y_aux[j + 1][i] && y_aux[j + 1][i]->y >= x_aux[i]->y)
 				plot_line(x_aux[i], y_aux[j + 1][i], mesh);
+			else if (y_aux[j + 1] && y_aux[j + 1][i])
+				plot_line(y_aux[j + 1][i], x_aux[i], mesh); 
 			i++;
 		}
-		if (y_aux[j + 1] && y_aux[j + 1][i])
+		if (y_aux[j + 1] && y_aux[j + 1][i] && y_aux[j + 1][i]->y >= x_aux[i]->y)
 			plot_line(x_aux[i], y_aux[j + 1][i], mesh);
+		else if (y_aux[j + 1] && y_aux[j + 1][i])
+			plot_line(y_aux[j + 1][i], x_aux[i], mesh); 
 		j++;
 	}
 }

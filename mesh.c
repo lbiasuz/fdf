@@ -55,10 +55,10 @@ void	rotate_point(t_point *point, t_mesh *mesh)
 	s = sin(mesh->angle);
 	c = cos(mesh->angle);
 	point->x -= mesh->size_x / 2;
-	point->y -= mesh->size_y / 5;
+	point->y -= mesh->size_y / 2;
 	aux.x = point->x * c + point->y * s;
 	aux.y = -point->x * s + point->y * c;	
 	point->x = aux.x + mesh->size_x / 2;	
-	point->y = aux.y + mesh->size_y / 5;
+	point->y = aux.y + mesh->size_y / 2;
 }
 
