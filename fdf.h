@@ -51,6 +51,10 @@ void	free_arr(char **arr);
 
 void	put_pixel(t_point point, t_mesh *mesh);
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh);
+void	plot_line_x(t_point *beg, t_point *end, t_mesh *mesh);
+void	plot_line_nx(t_point *beg, t_point *end, t_mesh *mesh);
+void	plot_line_y(t_point *beg, t_point *end, t_mesh *mesh);
+void	plot_line_ny(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_mesh(t_mesh *mesh);
 void	center_point(t_point *point, t_mesh *mesh);
 void	rotate_point(t_point *point, t_mesh *mesh);

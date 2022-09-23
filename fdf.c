@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 	mesh->arr_y = arr_arr_size(mesh->grid);
 	mesh->size_x = 1200; 
 	mesh->size_y = 1000; 
-	mesh->angle = -15 * 3.1415f / 180; 
+	mesh->angle = -30 * 3.1415f / 180; 
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
 	mesh->bpp = 32;
