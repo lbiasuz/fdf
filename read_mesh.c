@@ -36,7 +36,7 @@ t_point	*new_point(int x, int y, char *z_color)
 	point = (t_point *) ft_calloc(1, sizeof(t_point));
 	point->x = x;
 	point->y = y;
-	point->z = y + ft_atoi(z_color);
+	point->z = ft_atoi(z_color);
 	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
 		point->color = atoh(ft_strchr(z_color, ',') + 1);
 	else
