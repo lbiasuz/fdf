@@ -1,6 +1,5 @@
 #include "fdf.h"
 
-
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
 	if ((end->y - beg->y) <= (end->x - beg->x))

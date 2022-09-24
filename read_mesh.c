@@ -14,7 +14,7 @@
 
 int	atoh(char *hex_string)
 {
-	char*	base;
+	char	*base;
 	int		i;
 
 	i = -1;
@@ -32,7 +32,7 @@ int	atoh(char *hex_string)
 t_point	*new_point(int x, int y, char *z_color)
 {
 	t_point	*point;
-	
+
 	point = (t_point *) ft_calloc(1, sizeof(t_point));
 	point->x = x;
 	point->y = y;
@@ -47,8 +47,8 @@ t_point	*new_point(int x, int y, char *z_color)
 t_point	**get_line_split(char *line, int x, int y, int size_scale)
 {
 	char		**split;
-	t_point**	vec;
-	int		i;
+	t_point		**vec;
+	int			i;
 
 	i = 0;
 	split = ft_split(line, ' ');
@@ -58,7 +58,7 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 	if (!vec)
 		return (NULL);
 	vec[i] = NULL;
-	x +=  size_scale * i;
+	x += size_scale * i;
 	while (--i >= 0)
 	{	
 		vec[i] = new_point(x, y, split[i]);
@@ -67,10 +67,10 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 	return (vec);
 }
 
-t_point ***append_to_end(t_point ***list, t_point **line)
+t_point	***append_to_end(t_point ***list, t_point **line)
 {
-	int	i;
 	t_point	***res;
+	int		i;
 
 	i = 0;
 	while (list && list[i])
@@ -85,11 +85,11 @@ t_point ***append_to_end(t_point ***list, t_point **line)
 
 t_point	***read_mesh(int fd, int x, int y, int size_scale)
 {
-	t_point ***list;
+	t_point	***list;
 	char	*line;
 
 	line = get_next_line(fd);
-       	list = append_to_end(NULL, get_line_split(line, x, y, size_scale));
+	list = append_to_end(NULL, get_line_split(line, x, y, size_scale));
 	while (line)
 	{
 		list = append_to_end(list, get_line_split(line, x, y, size_scale));

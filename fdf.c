@@ -13,21 +13,20 @@
 #include "fdf.h"
 
 int	print_mesh(void *aux)
-{	
-
+{
 	t_mesh		*mesh;
 
 	mesh = (t_mesh *) aux;
 	plot_mesh(mesh);
-	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0); 
+	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	int		fd;
-	
 	t_mesh	*mesh;
+
 	if (argc <= 1)
 		return (0);
 	ft_printf("FD: %s \n", argv[1]);
@@ -39,9 +38,9 @@ int	main(int argc, char **argv)
 	mesh->grid = read_mesh(fd, 0, 0, mesh->size_scale);
 	mesh->arr_x = array_size(mesh->grid[0]);
 	mesh->arr_y = arr_arr_size(mesh->grid);
-	mesh->size_x = 1200; 
-	mesh->size_y = 1000; 
-	mesh->angle = -30 * 3.1415f / 180; 
+	mesh->size_x = 1200;
+	mesh->size_y = 1000;
+	mesh->angle = -30 * 3.1415f / 180;
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
 	mesh->bpp = 32;
@@ -54,4 +53,3 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
 }
-
