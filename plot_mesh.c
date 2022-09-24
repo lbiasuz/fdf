@@ -24,7 +24,7 @@ void	put_pixel(t_point point, t_mesh *mesh)
 		aux = mesh->image_str + (
 			((point.y)* mesh->size_x) + point.x * (mesh->bpp / 8)
 		);
-		*(unsigned int*)aux = point.color;
+		*(unsigned int*) aux = point.color + (100 * point.z);
 	}
 }
 

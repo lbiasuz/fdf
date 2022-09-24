@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	if (fd <= 0)
 		return (0);
 	mesh = malloc(sizeof(t_mesh));
-	mesh->size_scale = 25;
+	mesh->size_scale = 35;
 	mesh->grid = read_mesh(fd, 0, 0, mesh->size_scale);
 	mesh->arr_x = array_size(mesh->grid[0]);
 	mesh->arr_y = arr_arr_size(mesh->grid);
@@ -50,8 +50,8 @@ int	main(int argc, char **argv)
 	mesh->mlx_win = mlx_new_window(mesh->mlx, mesh->size_x, mesh->size_y, "FDF?");
 	mesh->image = mlx_new_image(mesh->mlx, mesh->size_x, mesh->size_y);
 	mesh->image_str = mlx_get_data_addr(mesh->image, &mesh->bpp, &mesh->size_x, &mesh->endianes);
+	mlx_key_hook(mesh->mlx_win, close, mesh);
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
-	close(fd);
 }
 

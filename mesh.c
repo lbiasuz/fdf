@@ -42,7 +42,7 @@ void	iterate_mesh(t_mesh *mesh, void (*f)(t_point *, t_mesh *))
 
 void	center_point(t_point *point, t_mesh *mesh)
 {
-	point->y += mesh->size_y / 20 - (mesh->arr_y * mesh->size_scale / 20);
+	point->y += mesh->size_y / 2 - (mesh->arr_y * mesh->size_scale / 2);
 	point->x += mesh->size_x / 2 - (mesh->arr_x * mesh->size_scale / 2);
 }
 

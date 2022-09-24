@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-int	close(int key_code, void *mesh)
+int	close(int key_code, t_mesh *mesh)
 {
 	free_mesh(mesh);
 }
