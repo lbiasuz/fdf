@@ -33,22 +33,17 @@ void	free_point(t_point	*point)
 	point = NULL;
 }
 
-void	free_line(void	*list)
-{
-	ft_lstiter(list, free);
-}
-
 void	free_mesh(t_mesh *mesh)
 {
 	int i;
 	int j;
 
 	i = 0;
-	j = 0;
 	while (mesh->grid[i])
 	{
-		while(mesh->grid[i][j++])
-			free_point(mesh->grid[i][j]);
+		j = 0;
+		while(mesh->grid[i][j])
+			free_point(mesh->grid[i][j++]);
 		free(mesh->grid[i]);
 		i++;
 	}

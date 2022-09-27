@@ -12,7 +12,18 @@
 
 #include "fdf.h"
 
-int	close(int key_code, t_mesh *mesh)
+int	handle_close(int key_code, t_mesh *mesh)
 {
-	free_mesh(mesh);
+	if (key_code == XK_Escape)
+	{
+		mlx_destroy_window(mesh->mlx, mesh->mlx_win);
+		mlx_destroy_image(mesh->mlx, mesh->image);
+		mlx_destroy_display(mesh->mlx);
+		free_mesh(mesh);
+		free(mesh->mlx);
+		free(mesh);
+		exit(0);
+	}
+	return (0);
 }
+

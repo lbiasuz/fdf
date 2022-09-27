@@ -64,6 +64,7 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 		vec[i] = new_point(x, y, split[i]);
 		x -= size_scale;
 	}
+	free_arr(split);
 	return (vec);
 }
 

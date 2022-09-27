@@ -19,6 +19,8 @@
 # include "minilibx/mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 typedef struct s_point {
 	int	x;
@@ -48,6 +50,7 @@ void	free_point(t_point *point);
 void	free_line(void *list);
 void	free_mesh(t_mesh *mesh);
 void	free_arr(char **arr);
+int		handle_close(int key_code, t_mesh *mesh);
 
 void	put_pixel(t_point point, t_mesh *mesh);
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh);

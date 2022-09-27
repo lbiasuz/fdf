@@ -17,8 +17,11 @@ int	print_mesh(void *aux)
 	t_mesh		*mesh;
 
 	mesh = (t_mesh *) aux;
-	plot_mesh(mesh);
-	mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
+	if (mesh->mlx && mesh->mlx_win)
+	{
+		plot_mesh(mesh);
+		mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
+	}
 	return (1);
 }
 
@@ -49,7 +52,8 @@ int	main(int argc, char **argv)
 	mesh->mlx_win = mlx_new_window(mesh->mlx, mesh->size_x, mesh->size_y, "FDF?");
 	mesh->image = mlx_new_image(mesh->mlx, mesh->size_x, mesh->size_y);
 	mesh->image_str = mlx_get_data_addr(mesh->image, &mesh->bpp, &mesh->size_x, &mesh->endianes);
-	mlx_key_hook(mesh->mlx_win, close, mesh);
+	mlx_key_hook(mesh->mlx_win, handle_close, mesh);
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
+	close(fd);
 }
