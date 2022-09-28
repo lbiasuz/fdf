@@ -38,6 +38,7 @@ typedef struct s_mesh {
 	int		arr_y;
 	int		size_x;
 	int		size_y;
+	int		line_size;
 	int		size_scale;
 	t_point ***grid;
 	int		bpp;
@@ -59,6 +60,7 @@ void	plot_line_nx(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_line_y(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_line_ny(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_mesh(t_mesh *mesh);
+t_mesh	*init_mesh(int fd);
 void	center_point(t_point *point, t_mesh *mesh);
 void	rotate_point(t_point *point, t_mesh *mesh);
 void	iterate_mesh(t_mesh *mesh, void (*f)(t_point *, t_mesh *));
