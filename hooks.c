@@ -27,3 +27,16 @@ int	handle_close(int key_code, t_mesh *mesh)
 	return (0);
 }
 
+int	handle_scale(int key_code, t_mesh *mesh)
+{
+	mlx_clear_window(mesh->mlx, mesh->mlx_win);
+	ft_bzero(mesh->image_str, mesh->size_y * mesh->line_size);	
+	if (key_code == XK_Up)
+		mesh->size_scale++;
+	else if (key_code == XK_Down)
+		mesh->size_scale--;
+	iterate_mesh(mesh, refresh_point);
+	iterate_mesh(mesh, center_point);
+	iterate_mesh(mesh, rotate_point);
+	return (0);
+}

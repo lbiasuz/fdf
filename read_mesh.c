@@ -29,7 +29,7 @@ int	atoh(char *hex_string)
 	return (i);
 }
 
-t_point	*new_point(int x, int y, char *z_color)
+t_point	*new_point(int x, int y, char *z_color, int size_scale)
 {
 	t_point	*point;
 
@@ -37,6 +37,8 @@ t_point	*new_point(int x, int y, char *z_color)
 	point->x = x;
 	point->y = y;
 	point->z = ft_atoi(z_color);
+	point->px = x / size_scale;
+	point->py = y / size_scale;
 	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
 		point->color = atoh(ft_strchr(z_color, ',') + 1);
 	else
@@ -61,7 +63,7 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 	x += size_scale * i;
 	while (--i >= 0)
 	{	
-		vec[i] = new_point(x, y, split[i]);
+		vec[i] = new_point(x, y, split[i], size_scale);
 		x -= size_scale;
 	}
 	free_arr(split);

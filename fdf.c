@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
 	mlx_key_hook(mesh->mlx_win, handle_close, mesh);
+	mlx_key_hook(mesh->mlx_win, handle_scale, mesh);
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
 	close(fd);

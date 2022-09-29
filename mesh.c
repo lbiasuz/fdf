@@ -66,3 +66,9 @@ void	rotate_point(t_point *point, t_mesh *mesh)
 	point->x = aux.x + mesh->size_x / 2;
 	point->y = aux.y + mesh->size_y / 2;
 }
+
+void	refresh_point(t_point *point, t_mesh *mesh)
+{
+	point->y = point->py * mesh->size_scale;
+	point->x = point->px * mesh->size_scale;
+}
