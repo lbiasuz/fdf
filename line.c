@@ -9,7 +9,7 @@ int		ft_abs(int	n)
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
-	if ((end->y - end->z) - (beg->y - beg->z) < (end->x - beg->x))
+	if (ft_abs((end->y - end->z) - (beg->y - beg->z)) < ft_abs(end->x - beg->x))
 	{
 		if (ft_abs(beg->y - beg->z) <= ft_abs(end->y - end->z))
 			plot_line_x(beg, end, mesh);
