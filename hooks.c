@@ -38,5 +38,5 @@ int	handle_scale(int key_code, t_mesh *mesh)
 	iterate_mesh(mesh, refresh_point);
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
-	return (0);
+	return (1);
 }

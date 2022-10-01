@@ -27,6 +27,8 @@ typedef struct s_point {
 	int	y;
 	int	z;
 	int	color;
+	int	px;
+	int	py;
 } t_point;
 
 typedef struct s_mesh {
@@ -52,6 +54,7 @@ void	free_line(void *list);
 void	free_mesh(t_mesh *mesh);
 void	free_arr(char **arr);
 int		handle_close(int key_code, t_mesh *mesh);
+int		handle_scale(int key_code, t_mesh *mesh);
 
 void	put_pixel(t_point point, t_mesh *mesh);
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh);
@@ -60,13 +63,15 @@ void	plot_line_nx(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_line_y(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_line_ny(t_point *beg, t_point *end, t_mesh *mesh);
 void	plot_mesh(t_mesh *mesh);
+
 t_mesh	*init_mesh(int fd);
 void	center_point(t_point *point, t_mesh *mesh);
 void	rotate_point(t_point *point, t_mesh *mesh);
+void	refresh_point(t_point *point, t_mesh *mesh);
 void	iterate_mesh(t_mesh *mesh, void (*f)(t_point *, t_mesh *));
 
 int		atoh(char *hex_string);
-t_point	*new_point(int x, int y, char *z_color);
+t_point	*new_point(int x, int y, char *z_color, int size_scale);
 t_point **get_line_split(char *line, int x, int y, int size_scale);
 t_point ***read_mesh(int fd, int x, int y, int size_scale);
 
