@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 09:47:06 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 23:42:03 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/01 13:03:57 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	free_point(t_point	*point)
 
 void	free_mesh(t_mesh *mesh)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (mesh->grid[i])
 	{
 		j = 0;
-		while(mesh->grid[i][j])
+		while (mesh->grid[i][j])
 			free_point(mesh->grid[i][j++]);
 		free(mesh->grid[i]);
 		i++;

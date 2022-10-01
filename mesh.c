@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mesh.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/01 11:52:56 by lbiasuz           #+#    #+#             */
+/*   Updated: 2022/10/01 11:53:11 by lbiasuz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 t_mesh	*init_mesh(int fd)
@@ -11,8 +23,8 @@ t_mesh	*init_mesh(int fd)
 	mesh->grid = read_mesh(fd, 0, 0, mesh->size_scale);
 	mesh->arr_x = array_size(mesh->grid[0]);
 	mesh->arr_y = arr_arr_size(mesh->grid);
-	mesh->size_x = 1200; 
-	mesh->size_y = 1000; 
+	mesh->size_x = 1200;
+	mesh->size_y = 1000;
 	mesh->line_size = 1200;
 	mesh->angle = -30 * 3.1415f / 180;
 	mesh->mlx = mlx_init();
@@ -29,7 +41,7 @@ t_mesh	*init_mesh(int fd)
 void	iterate_mesh(t_mesh *mesh, void (*f)(t_point *, t_mesh *))
 {
 	int	iy;
-	int	ix;	
+	int	ix;
 
 	iy = 0;
 	ix = 0;

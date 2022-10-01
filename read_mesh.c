@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/31 23:46:36 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/01 11:48:07 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_point	**get_line_split(char *line, int x, int y, int size_scale)
 	vec[i] = NULL;
 	x += size_scale * i;
 	while (--i >= 0)
-	{	
+	{
 		vec[i] = new_point(x, y, split[i], size_scale);
 		x -= size_scale;
 	}

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   line.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/01 11:53:35 by lbiasuz           #+#    #+#             */
+/*   Updated: 2022/10/01 13:05:31 by lbiasuz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-int		ft_abs(int	n)
+int	ft_abs(int n)
 {
 	if (n < 0)
 		return (n * -1);
@@ -96,7 +108,7 @@ void	plot_line_ny(t_point *beg, t_point *end, t_mesh *mesh)
 		if (d >= 0)
 		{
 			d += 2 * (ft_abs(end->x - beg->x) - ft_abs(eyz - byz));
-			aux.x--; 
+			aux.x--;
 		}
 		else
 			d += 2 * ft_abs(end->x - beg->x);

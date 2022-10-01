@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:11:03 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/08/27 16:39:53 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/01 13:04:48 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	handle_close(int key_code, t_mesh *mesh)
 int	handle_scale(int key_code, t_mesh *mesh)
 {
 	mlx_clear_window(mesh->mlx, mesh->mlx_win);
-	ft_bzero(mesh->image_str, mesh->size_y * mesh->line_size);	
+	ft_bzero(mesh->image_str, mesh->size_y * mesh->line_size);
 	if (key_code == XK_Up)
 		mesh->size_scale++;
 	else if (key_code == XK_Down)
