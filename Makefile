@@ -6,7 +6,7 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/10/01 13:10:52 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/10/01 16:37:30 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ OPTIONS		=		-Wall -Wextra -Werror -Lmlx_linux \
 
 DEPENDENCIES	=	minilibx.a libft.a
 
-SRC_FILES		=	free.c read_mesh.c plot_mesh.c dot_fdf.c fdf.c array_fun.c \
-					mesh.c line.c hooks.c
+SRC_FILES		=	free.c read_mesh.c plot_mesh.c dot_fdf.c fdf.c \
+					helper_functions.c mesh.c line.c hooks.c point.c
 
 OBJ_FILES		= $(SRC_FILES:.c=.o)
 

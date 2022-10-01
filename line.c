@@ -6,18 +6,11 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:53:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 13:05:31 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/01 14:29:12 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (n * -1);
-	return (n);
-}
 
 void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
