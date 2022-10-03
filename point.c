@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:48:36 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 22:30:37 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/03 07:53:10 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,4 @@ void	refresh_point(t_point *point, t_mesh *mesh)
 {
 	point->y = point->py * mesh->size_scale;
 	point->x = point->px * mesh->size_scale;
-	point->z = point->z + mesh->z_scale;
 }

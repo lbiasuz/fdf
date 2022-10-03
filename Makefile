@@ -6,13 +6,13 @@
 #    By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 20:22:21 by lbiasuz           #+#    #+#              #
-#    Updated: 2022/10/03 07:30:00 by lbiasuz          ###   ########.fr        #
+#    Updated: 2022/10/03 07:56:26 by lbiasuz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC	=				gcc
 
-NAME	=			fdf.out
+NAME	=			fdf
 
 HEAD_FILES	=		fdf.h
 
@@ -36,7 +36,7 @@ $(DEPENDENCIES):
 	mv libft/libft.a libft.a
 
 $(NAME): $(DEPENDENCIES)
-	$(CC) $(SRC_FILES) $(DEPENDENCIES) $(OPTIONS)
+	$(CC) $(SRC_FILES) $(DEPENDENCIES) $(OPTIONS) -o $(NAME)
 
 clean:
 	make -C libft/ fclean
@@ -44,3 +44,5 @@ clean:
 
 fclean: clean
 	rm -rf libft.a minilibx.a fdf
+
+re: fclean all

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/03 07:35:01 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/03 07:52:03 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
-# include <X11/X.h>
 
 typedef struct s_point {
 	int	x;
@@ -56,7 +55,6 @@ typedef struct s_mesh {
 	double	angle;
 	int		y_offset;
 	int		x_offset;
-	int		z_scale;
 }	t_mesh;
 
 int		open_fdf(char *file_name);
