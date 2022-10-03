@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:52:56 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 22:30:11 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/03 07:22:53 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ t_mesh	*init_mesh(int fd)
 	mesh->arr_x = array_size(mesh->grid[0]);
 	mesh->arr_y = arr_arr_size(mesh->grid);
 	mesh->mlx = mlx_init();
+	if (!mesh->mlx)
+	{
+		ft_printf("MLX NÃO INICIADA\n");
+		free_mesh(mesh);
+		free(mesh);
+		close(fd);
+		exit(0);
+	}
 	mesh->mlx_win = mlx_new_window(
 			mesh->mlx, mesh->size_x, mesh->size_y, "FDF?"
 			);

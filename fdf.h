@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 22:31:32 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/03 07:35:01 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "libft/libft.h"
 # include "libft/get_next_line.h"
 # include "libft/ft_printf.h"
-# include "minilibx/mlx.h"
+# include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
 # include <X11/X.h>
@@ -81,7 +81,7 @@ void	plot_mesh(t_mesh *mesh);
 
 t_mesh	*init_statics(void);
 t_mesh	*init_mesh(int fd);
-void 	move_point(t_point *point, t_mesh *mesh);
+void	move_point(t_point *point, t_mesh *mesh);
 void	center_point(t_point *point, t_mesh *mesh);
 void	rotate_point(t_point *point, t_mesh *mesh);
 void	refresh_point(t_point *point, t_mesh *mesh);
