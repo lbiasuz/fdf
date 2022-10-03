@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:37:37 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/03 08:31:53 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/03 08:59:04 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	close(fd);
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
-	mlx_hook(mesh->mlx_win, 17, 1L<<3, close_fdf, mesh);
+	mlx_hook(mesh->mlx_win, 17, 1L << 3, close_fdf, mesh);
 	mlx_key_hook(mesh->mlx_win, handle_keypress, mesh);
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
