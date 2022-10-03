@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:48:36 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 21:40:43 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 22:30:37 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	rotate_point(t_point *point, t_mesh *mesh)
 	float	c;
 	t_point	aux;
 
-	s = sin(mesh->angle);
-	c = cos(mesh->angle);
+	s = sin(mesh->angle * 3.1415f / 180);
+	c = cos(mesh->angle * 3.1415f / 180);
 	point->x -= mesh->size_x / 2;
 	point->y -= mesh->size_y / 2;
 	aux.x = point->x * c + point->y * s;

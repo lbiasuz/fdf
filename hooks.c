@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 11:11:03 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 21:38:59 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 22:35:25 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	handle_keypress(int key_code, t_mesh *mesh)
 		|| key_code == XK_S || key_code == XK_D
 	)
 		handle_movement(key_code, mesh);
-	// else if (key_code == XK_Q || key_code == XK_E)
+	else if (key_code == XK_Q || key_code == XK_E)
+		handle_rotate(key_code, mesh);
 	return (1);
 }
 
@@ -55,7 +56,21 @@ int	handle_scale(int key_code, t_mesh *mesh)
 		mesh->size_scale--;
 	iterate_mesh(mesh, refresh_point);
 	iterate_mesh(mesh, center_point);
+	iterate_mesh(mesh, rotate_point);
 	iterate_mesh(mesh, move_point);
+	return (1);
+}
+
+int	handle_rotate(int key_code, t_mesh *mesh)
+{
+	mlx_clear_window(mesh->mlx, mesh->mlx_win);
+	ft_bzero(mesh->image_str, mesh->size_y * mesh->line_size);
+	if (key_code == XK_Q)
+		mesh->angle += 5;
+	else if (key_code == XK_E)
+		mesh->angle -= 5;
+	iterate_mesh(mesh, refresh_point);
+	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
 	return (1);
 }

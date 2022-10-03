@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:52:56 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 19:53:22 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 22:30:11 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_mesh	*init_statics(void)
 	mesh->size_x = 1200;
 	mesh->size_y = 1000;
 	mesh->line_size = 1200;
-	mesh->angle = -30 * 3.1415f / 180;
+	mesh->angle = -30;
 	mesh->x_offset = 0;
 	mesh->y_offset = 0;
 	return (mesh);

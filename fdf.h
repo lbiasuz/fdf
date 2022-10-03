@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/02 17:18:47 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 22:31:32 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int		close_fdf(t_mesh *mesh);
 
 int		handle_keypress(int key_code, t_mesh *mesh);
 int		handle_scale(int key_code, t_mesh *mesh);
+int		handle_rotate(int key_code, t_mesh *mesh);
 int		handle_movement(int key_code, t_mesh *mesh);
 
 void	put_pixel(t_point point, t_mesh *mesh);
