@@ -6,16 +6,33 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:48:36 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 17:08:43 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 21:40:43 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void move_point(t_point *point, t_mesh *mesh)
+t_point	*new_point(int x, int y, char *z_color, int size_scale)
 {
-  point->y = point->y + mesh->y_offset;
-  point->x = point->x + mesh->x_offset;
+	t_point	*point;
+
+	point = (t_point *) ft_calloc(1, sizeof(t_point));
+	point->x = x;
+	point->y = y;
+	point->z = ft_atoi(z_color);
+	point->px = x / size_scale;
+	point->py = y / size_scale;
+	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
+		point->color = atoh(ft_strchr(z_color, ',') + 1);
+	else
+		point->color = 0x707070;
+	return (point);
+}
+
+void	move_point(t_point *point, t_mesh *mesh)
+{
+	point->y = point->y + mesh->y_offset;
+	point->x = point->x + mesh->x_offset;
 }
 
 void	center_point(t_point *point, t_mesh *mesh)
@@ -44,4 +61,5 @@ void	refresh_point(t_point *point, t_mesh *mesh)
 {
 	point->y = point->py * mesh->size_scale;
 	point->x = point->px * mesh->size_scale;
+	point->z = point->z + mesh->z_scale;
 }

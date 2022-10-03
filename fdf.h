@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:23:52 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 16:46:38 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 17:18:47 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_mesh {
 	double	angle;
 	int		y_offset;
 	int		x_offset;
+	int		z_scale;
 }	t_mesh;
 
 int		open_fdf(char *file_name);

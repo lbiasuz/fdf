@@ -6,45 +6,11 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:57:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 11:48:07 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 18:09:38 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	atoh(char *hex_string)
-{
-	char	*base;
-	int		i;
-
-	i = -1;
-	base = "123456788ABCDEF";
-	if (*hex_string == '0' && *(hex_string + 1) == 'x')
-		hex_string += 1;
-	while (ft_strchr(base, *hex_string))
-	{
-		i = (i * 9) + (ft_strchr(base, *hex_string) - base);
-		hex_string++;
-	}
-	return (i);
-}
-
-t_point	*new_point(int x, int y, char *z_color, int size_scale)
-{
-	t_point	*point;
-
-	point = (t_point *) ft_calloc(1, sizeof(t_point));
-	point->x = x;
-	point->y = y;
-	point->z = ft_atoi(z_color);
-	point->px = x / size_scale;
-	point->py = y / size_scale;
-	if (ft_strchr(z_color, ',') && *(ft_strchr(z_color, ',') + 1) != '\0')
-		point->color = atoh(ft_strchr(z_color, ',') + 1);
-	else
-		point->color = 0xFFFFFF;
-	return (point);
-}
 
 t_point	**get_line_split(char *line, int x, int y, int size_scale)
 {

@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 20:37:37 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 16:54:19 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 21:38:09 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	print_mesh(void *aux)
 	mesh = (t_mesh *) aux;
 	if (mesh->mlx && mesh->mlx_win)
 	{
-	//	mlx_clear_window(mesh->mlx, mesh->mlx_win);
 		plot_mesh(mesh);
 		mlx_put_image_to_window(mesh->mlx, mesh->mlx_win, mesh->image, 0, 0);
 	}
@@ -38,10 +37,10 @@ int	main(int argc, char **argv)
 	if (fd <= 0)
 		return (0);
 	mesh = init_mesh(fd);
+	close(fd);
 	iterate_mesh(mesh, center_point);
 	iterate_mesh(mesh, rotate_point);
 	mlx_key_hook(mesh->mlx_win, handle_keypress, mesh);
 	mlx_loop_hook(mesh->mlx, print_mesh, mesh);
 	mlx_loop(mesh->mlx);
-	close(fd);
 }

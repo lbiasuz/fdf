@@ -6,7 +6,7 @@
 /*   By: lbiasuz <lbiasuz@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:53:35 by lbiasuz           #+#    #+#             */
-/*   Updated: 2022/10/01 14:29:12 by lbiasuz          ###   ########.fr       */
+/*   Updated: 2022/10/02 17:31:57 by lbiasuz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ void	plot_line(t_point *beg, t_point *end, t_mesh *mesh)
 {
 	if (ft_abs((end->y - end->z) - (beg->y - beg->z)) < ft_abs(end->x - beg->x))
 	{
-		if (ft_abs(beg->y - beg->z) <= ft_abs(end->y - end->z))
+		if (beg->x <= end->x && (beg->y - beg->z) <= (end->y - end->z))
 			plot_line_x(beg, end, mesh);
-		else
+		else if (beg->x <= end->x && (beg->y - beg->z) > (end->y - end->z))
 			plot_line_nx(beg, end, mesh);
+		else if (beg->x > end->x && (beg->y - beg->z) <= (end->y - end->z))
+			plot_line_nx(end, beg, mesh);
+		else
+			plot_line_x(end, beg, mesh);
 	}
 	else
 	{
